@@ -31,11 +31,11 @@ Add the following in your main component.html
 
     <ng2-balloon-msg></ng2-balloon-msg>
 
+### app.module.ts
 Add the following lines to your apps main module imports (app.module.ts?)
 
     import { Ng2BalloonMsgModule, Ng2BalloonMsgService} from "@synerty/ng2-balloon-msg";
 
-### app.module.ts
 Again, in the main module, Add Ng2BalloonMsgModule to the "imports" array.
 
     Ng2BalloonMsgModule
@@ -63,7 +63,7 @@ Example:
     export class AppModule { }
 
 ### where-ever.component.ts
-Finally, To use the balloon service anywhere in your app :
+To use the balloon service anywhere in your app :
 
 Import the service
 
@@ -84,6 +84,9 @@ Now call the show functions
 ## Scaffold
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.20-4.
+
+The default angular-cli test app was used as a test bed to show the messages.
+Below are the standard instructions for the angular-cli usage.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
