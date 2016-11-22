@@ -1,7 +1,24 @@
 {
-  "name": "ng2-balloon-msg",
-  "version": "0.0.0",
+  "name": "@synerty/ng2-balloon-msg",
+  "version": "1.0.0",
+  "description": "Show balloon messages to users with Angular2",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Synerty/ng2-balloon-msg.git"
+  },
+  "keywords": [
+    "angular2",
+    "ui",
+    "baloon",
+    "message"
+  ],
+  "author": "Synerty Pty Ltd <contact@synerty.com> (https://www.synerty.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Synerty/ng2-balloon-msg/issues"
+  },
+  "homepage": "https://github.com/Synerty/ng2-balloon-msg#readme"
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
@@ -10,7 +27,7 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^2.1.0",
     "@angular/compiler": "^2.1.0",
