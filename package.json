@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Synerty/ng2-balloon-msg/issues"
   },
-  "homepage": "https://github.com/Synerty/ng2-balloon-msg#readme"
+  "homepage": "https://github.com/Synerty/ng2-balloon-msg#readme",
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
