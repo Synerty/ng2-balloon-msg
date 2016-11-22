@@ -1,0 +1,12 @@
+<div (click)="clicked()">
+    <div *ngIf="shown">
+        <div class="alert"
+             [class.alert-success]="msgDetails.isSuccess()"
+             [class.alert-info]="msgDetails.isInfo()"
+             [class.alert-warning]="msgDetails.isWarning()"
+             [class.alert-danger]="msgDetails.isError()"
+             >
+            <span>{{msgDetails.msg}}</span>
+        </div>
+    </div>
+</div>
