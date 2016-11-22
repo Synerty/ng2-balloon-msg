@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var rapui_usr_msg_item_component_1 = require("./usr-msg-item-comp/ng2-balloon-msg-item.component");
-var rapui_usr_msg_test_component_1 = require("./components/usr-msg-test-comp/ng2-balloon-msg-test.component");
-var rapui_usr_msg_component_1 = require("./usr-msg-comp/ng2-balloon-msg.component");
+var ng2_balloon_msg_item_component_1 = require("../components/item/ng2-balloon-msg-item.component");
+var ng2_balloon_msg_test_component_1 = require("../components/test/ng2-balloon-msg-test.component");
+var ng2_balloon_msg_queue_component_1 = require("../components/queue/ng2-balloon-msg-queue.component");
 var Ng2BalloonMsgModule = (function () {
     function Ng2BalloonMsgModule() {
     }
@@ -19,14 +19,14 @@ var Ng2BalloonMsgModule = (function () {
                 common_1.CommonModule,
             ],
             exports: [
-                rapui_usr_msg_component_1.Ng2BalloonMsgComponent,
-                rapui_usr_msg_test_component_1.Ng2BalloonMsgTestComponent,
-                rapui_usr_msg_item_component_1.Ng2BalloonMsgItemComponent
+                ng2_balloon_msg_queue_component_1.Ng2BalloonMsgQueueComponent,
+                ng2_balloon_msg_test_component_1.Ng2BalloonMsgTestComponent,
+                ng2_balloon_msg_item_component_1.Ng2BalloonMsgItemComponent
             ],
             declarations: [
-                rapui_usr_msg_component_1.Ng2BalloonMsgComponent,
-                rapui_usr_msg_test_component_1.Ng2BalloonMsgTestComponent,
-                rapui_usr_msg_item_component_1.Ng2BalloonMsgItemComponent
+                ng2_balloon_msg_queue_component_1.Ng2BalloonMsgQueueComponent,
+                ng2_balloon_msg_test_component_1.Ng2BalloonMsgTestComponent,
+                ng2_balloon_msg_item_component_1.Ng2BalloonMsgItemComponent
             ],
             providers: []
         })
@@ -34,10 +34,3 @@ var Ng2BalloonMsgModule = (function () {
     return Ng2BalloonMsgModule;
 }());
 exports.Ng2BalloonMsgModule = Ng2BalloonMsgModule;
-//
-//
-// // Convert all the module exports into a relative export from here
-// export * from "./usr-msg-item-comp/ng2-balloon-msg-item.component";
-// export * from "./usr-msg-test-comp/ng2-balloon-msg-test.component";
-// export * from "./usr-msg-comp/ng2-balloon-msg.component";
-// export * from "./usr-msg-service/ng2-balloon-msg.service"; 

@@ -6,20 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var Ng2BalloonMsgComponent = (function () {
-    function Ng2BalloonMsgComponent(msgService) {
+var Ng2BalloonMsgQueueComponent = (function () {
+    function Ng2BalloonMsgQueueComponent(msgService) {
         this.msgService = msgService;
         // Max Queue Length, the number of messages to show in the screen
         this.maxQueueLength = 3;
         this.backlog = [];
         this._onScreen = [];
     }
-    Ng2BalloonMsgComponent.prototype.ngOnInit = function () {
+    Ng2BalloonMsgQueueComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.msgService.getObservable()
             .subscribe(function (msgDetails) { return _this.backlog.push(msgDetails); });
     };
-    Ng2BalloonMsgComponent.prototype.getShown = function () {
+    Ng2BalloonMsgQueueComponent.prototype.getShown = function () {
         // First, remove all the shown messages that arn't shown
         this.backlog = this.backlog.filter(function (msgDetails) { return !msgDetails.expired; });
         // We can't just re-create the array otherwise angular2-dev complains that the
@@ -35,13 +35,13 @@ var Ng2BalloonMsgComponent = (function () {
         }
         return this._onScreen;
     };
-    Ng2BalloonMsgComponent = __decorate([
+    Ng2BalloonMsgQueueComponent = __decorate([
         core_1.Component({
             selector: 'ng2-balloon-msg',
-            templateUrl: 'ng2-balloon-msg.component.html',
-            styleUrls: ['ng2-balloon-msg.component.css']
+            templateUrl: 'ng2-balloon-msg-queue.component.html',
+            styleUrls: ['ng2-balloon-msg-queue.component.css']
         })
-    ], Ng2BalloonMsgComponent);
-    return Ng2BalloonMsgComponent;
+    ], Ng2BalloonMsgQueueComponent);
+    return Ng2BalloonMsgQueueComponent;
 }());
-exports.Ng2BalloonMsgComponent = Ng2BalloonMsgComponent;
+exports.Ng2BalloonMsgQueueComponent = Ng2BalloonMsgQueueComponent;

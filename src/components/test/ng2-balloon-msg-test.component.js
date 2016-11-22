@@ -20,13 +20,12 @@ var Ng2BalloonMsgTestComponent = (function () {
         this.msgService.showWarning("This is a test warning");
     };
     Ng2BalloonMsgTestComponent.prototype.showError = function () {
-        this.msgService.showError("This is a test error");
+        this.msgService.showError("This is a test error. Click to dismiss");
     };
     Ng2BalloonMsgTestComponent = __decorate([
         core_1.Component({
             selector: 'ng2-balloon-msg-test',
             templateUrl: 'ng2-balloon-msg-test.component.html',
-            styleUrls: ['ng2-balloon-msg-test.component.css']
         })
     ], Ng2BalloonMsgTestComponent);
     return Ng2BalloonMsgTestComponent;
