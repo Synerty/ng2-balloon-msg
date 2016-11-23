@@ -1,4 +1,6 @@
 {
+  "strictNullChecks": true,
+  "allowUnreachableCode": true,
   "compilerOptions": {
     "baseUrl": "",
     "declaration": false,
