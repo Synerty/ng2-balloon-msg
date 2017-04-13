@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {
     Ng2BalloonMsgService,
     UsrMsgDetails
-} from "../../services/service/ng2-balloon-msg.service";
+} from "../../services/ng2-balloon-msg.service";
 
 @Component({
     selector: 'ng2-balloon-msg',

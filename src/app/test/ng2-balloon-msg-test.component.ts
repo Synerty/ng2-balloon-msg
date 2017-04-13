@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Ng2BalloonMsgService} from "../../services/service/ng2-balloon-msg.service";
+import {Ng2BalloonMsgService} from "../../../";
 
 @Component({
     selector: 'ng2-balloon-msg-test',

@@ -1,19 +1,21 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+export var UsrMsgLevel;
 (function (UsrMsgLevel) {
     UsrMsgLevel[UsrMsgLevel["Error"] = 1] = "Error";
     UsrMsgLevel[UsrMsgLevel["Warning"] = 2] = "Warning";
     UsrMsgLevel[UsrMsgLevel["Info"] = 3] = "Info";
     UsrMsgLevel[UsrMsgLevel["Success"] = 4] = "Success";
-})(exports.UsrMsgLevel || (exports.UsrMsgLevel = {}));
-var UsrMsgLevel = exports.UsrMsgLevel;
+})(UsrMsgLevel || (UsrMsgLevel = {}));
 var UsrMsgDetails = (function () {
     function UsrMsgDetails(msg, type) {
         var _this = this;
@@ -27,11 +29,11 @@ var UsrMsgDetails = (function () {
     }
     return UsrMsgDetails;
 }());
-exports.UsrMsgDetails = UsrMsgDetails;
+export { UsrMsgDetails };
 var Ng2BalloonMsgService = (function () {
     function Ng2BalloonMsgService() {
         var _this = this;
-        this.observable = rxjs_1.Observable.create(function (observer) { return _this.observer = observer; });
+        this.observable = Observable.create(function (observer) { return _this.observer = observer; });
         // Call subscribe, otherwise the observer is never created
         this.observable.subscribe();
     }
@@ -50,9 +52,11 @@ var Ng2BalloonMsgService = (function () {
     Ng2BalloonMsgService.prototype.showSuccess = function (msg) {
         this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Success));
     };
-    Ng2BalloonMsgService = __decorate([
-        core_1.Injectable()
-    ], Ng2BalloonMsgService);
     return Ng2BalloonMsgService;
 }());
-exports.Ng2BalloonMsgService = Ng2BalloonMsgService;
+Ng2BalloonMsgService = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [])
+], Ng2BalloonMsgService);
+export { Ng2BalloonMsgService };
+//# sourceMappingURL=/home/peek/project/ng2-balloon-msg/ng2-balloon-msg/services/ng2-balloon-msg.service.js.map
