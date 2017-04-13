@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from "@angular/core";
-import { Ng2BalloonMsgService } from "../../../";
+import { Ng2BalloonMsgService, UsrMsgLevel, UsrMsgType } from "../../../index";
 var Ng2BalloonMsgTestComponent = (function () {
     function Ng2BalloonMsgTestComponent(msgService) {
         this.msgService = msgService;
@@ -24,6 +24,13 @@ var Ng2BalloonMsgTestComponent = (function () {
     };
     Ng2BalloonMsgTestComponent.prototype.showError = function () {
         this.msgService.showError("This is a test error. Click to dismiss");
+    };
+    Ng2BalloonMsgTestComponent.prototype.showSuccessConfirm = function () {
+        var p = this.msgService.showMessage("This is a success confirm.", UsrMsgLevel
+            .Success, UsrMsgType.Confirm, "OK Confirm");
+    };
+    Ng2BalloonMsgTestComponent.prototype.showErrorConfirmCancel = function () {
+        var p = this.msgService.showMessage("This is a Error Confirm Cancel.", UsrMsgLevel.Error, UsrMsgType.ConfirmCancel, "OK Confirm", "Cancel xx");
     };
     return Ng2BalloonMsgTestComponent;
 }());

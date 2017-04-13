@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Ng2BalloonMsgService} from "../../../";
+import {Ng2BalloonMsgService, UsrMsgLevel, UsrMsgType} from "../../../index";
 
 @Component({
     selector: 'ng2-balloon-msg-test',
@@ -25,4 +25,27 @@ export class Ng2BalloonMsgTestComponent {
     showError() {
         this.msgService.showError("This is a test error. Click to dismiss");
     }
+
+    showSuccessConfirm() {
+        let p = this.msgService.showMessage(
+            "This is a success confirm.",
+            UsrMsgLevel.Success,
+            UsrMsgType.Confirm, {
+                confirmText: "OK Confirm"
+            });
+    }
+
+    showErrorConfirmCancel() {
+        let p = this.msgService.showMessage(
+            "This is a Error Confirm Cancel.",
+            UsrMsgLevel.Error,
+            UsrMsgType.ConfirmCancel, {
+                confirmText: "OK Confirm",
+                cancelText: "Cancel xx",
+                dialogTitle: "Awesome title"
+
+            }
+        );
+    }
+
 }

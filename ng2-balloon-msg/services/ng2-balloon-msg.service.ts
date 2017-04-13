@@ -4,21 +4,72 @@ import {Observable, Observer} from "rxjs";
 export enum UsrMsgLevel {
     Error = 1,
     Warning = 2,
-    Info = 3,
-    Success = 4
+    Info = 4,
+    Success = 8
 }
 
+export enum UsrMsgType {
+    Fleeting = 1,
+    Sticky = 2,
+    Confirm = 4,
+    ConfirmCancel = 8
+}
+
+
 export class UsrMsgDetails {
+    private static nextMsgId = 1;
+
+    msgId: number;
     expired: boolean = false;
+    promise: Promise<null> | null = null;
+
+    private rejector: any = null;
+    private resolver: any = null;
 
     constructor(public msg: string,
-                public type: UsrMsgLevel) {
+                public level: UsrMsgLevel,
+                public type: UsrMsgType,
+                public confirmText: string | null = null,
+                public cancelText: string | null = null,
+                public dialogTitle: string | null = null) {
+        this.msgId = UsrMsgDetails.nextMsgId++;
+
+        this.promise = new Promise<null>((resolver, rejector) => {
+            this.resolver = resolver;
+            this.rejector = rejector;
+        });
+
     }
 
-    isSuccess = () => this.type === UsrMsgLevel.Success;
-    isInfo = () => this.type === UsrMsgLevel.Info;
-    isWarning = () => this.type === UsrMsgLevel.Warning;
-    isError = () => this.type === UsrMsgLevel.Error;
+    // Level
+    isSuccess = () => this.level === UsrMsgLevel.Success;
+    isInfo = () => this.level === UsrMsgLevel.Info;
+    isWarning = () => this.level === UsrMsgLevel.Warning;
+    isError = () => this.level === UsrMsgLevel.Error;
+
+    // Type
+    isFleeting = () => this.type === UsrMsgType.Fleeting;
+    isSticky = () => this.type === UsrMsgType.Sticky;
+    isConfirm = () => this.type === UsrMsgType.Confirm;
+    isConfirmCancel = () => this.type === UsrMsgType.ConfirmCancel;
+
+    resolve() {
+        if (this.resolver != null)
+            this.resolver();
+
+    }
+
+    reject() {
+        if (this.rejector != null)
+            this.rejector();
+    }
+
+}
+
+export interface UsrMsgParams {
+    confirmText?: string | null,
+    cancelText?: string | null,
+    dialogTitle?: string | null
 }
 
 @Injectable()
@@ -37,19 +88,33 @@ export class Ng2BalloonMsgService {
     }
 
     showError(msg: string): void {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Error));
+        this.observer.next(new UsrMsgDetails(
+            msg, UsrMsgLevel.Error, UsrMsgType.Sticky));
     }
 
     showWarning(msg: string): void {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Warning));
+        this.observer.next(new UsrMsgDetails(
+            msg, UsrMsgLevel.Warning, UsrMsgType.Fleeting));
     }
 
     showInfo(msg: string): void {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Info));
+        this.observer.next(new UsrMsgDetails(
+            msg, UsrMsgLevel.Info, UsrMsgType.Fleeting));
     }
 
     showSuccess(msg: string): void {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Success));
+        this.observer.next(new UsrMsgDetails(
+            msg, UsrMsgLevel.Success, UsrMsgType.Fleeting));
     }
+
+    showMessage(msg: string, level: UsrMsgLevel, type: UsrMsgType,
+                parameters?: UsrMsgParams): Promise<null> {
+
+        let {confirmText, cancelText, dialogTitle} = parameters;
+        let msgObj = new UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle);
+        this.observer.next(msgObj);
+        return msgObj.promise;
+    }
+
 
 }

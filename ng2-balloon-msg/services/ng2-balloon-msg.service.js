@@ -13,20 +13,53 @@ export var UsrMsgLevel;
 (function (UsrMsgLevel) {
     UsrMsgLevel[UsrMsgLevel["Error"] = 1] = "Error";
     UsrMsgLevel[UsrMsgLevel["Warning"] = 2] = "Warning";
-    UsrMsgLevel[UsrMsgLevel["Info"] = 3] = "Info";
-    UsrMsgLevel[UsrMsgLevel["Success"] = 4] = "Success";
+    UsrMsgLevel[UsrMsgLevel["Info"] = 4] = "Info";
+    UsrMsgLevel[UsrMsgLevel["Success"] = 8] = "Success";
 })(UsrMsgLevel || (UsrMsgLevel = {}));
+export var UsrMsgType;
+(function (UsrMsgType) {
+    UsrMsgType[UsrMsgType["Fleeting"] = 1] = "Fleeting";
+    UsrMsgType[UsrMsgType["Sticky"] = 2] = "Sticky";
+    UsrMsgType[UsrMsgType["Confirm"] = 4] = "Confirm";
+    UsrMsgType[UsrMsgType["ConfirmCancel"] = 8] = "ConfirmCancel";
+})(UsrMsgType || (UsrMsgType = {}));
 var UsrMsgDetails = (function () {
-    function UsrMsgDetails(msg, type) {
+    function UsrMsgDetails(msg, level, type, confirmText, cancelText) {
+        if (confirmText === void 0) { confirmText = null; }
+        if (cancelText === void 0) { cancelText = null; }
         var _this = this;
         this.msg = msg;
+        this.level = level;
         this.type = type;
+        this.confirmText = confirmText;
+        this.cancelText = cancelText;
         this.expired = false;
-        this.isSuccess = function () { return _this.type === UsrMsgLevel.Success; };
-        this.isInfo = function () { return _this.type === UsrMsgLevel.Info; };
-        this.isWarning = function () { return _this.type === UsrMsgLevel.Warning; };
-        this.isError = function () { return _this.type === UsrMsgLevel.Error; };
+        this.promise = null;
+        this.rejector = null;
+        this.resolver = null;
+        // Level
+        this.isSuccess = function () { return _this.level === UsrMsgLevel.Success; };
+        this.isInfo = function () { return _this.level === UsrMsgLevel.Info; };
+        this.isWarning = function () { return _this.level === UsrMsgLevel.Warning; };
+        this.isError = function () { return _this.level === UsrMsgLevel.Error; };
+        // Type
+        this.isFleeting = function () { return _this.type === UsrMsgType.Fleeting; };
+        this.isSticky = function () { return _this.type === UsrMsgType.Sticky; };
+        this.isConfirm = function () { return _this.type === UsrMsgType.Confirm; };
+        this.isConfirmCancel = function () { return _this.type === UsrMsgType.ConfirmCancel; };
+        this.promise = new Promise(function (resolver, rejector) {
+            _this.resolver = resolver;
+            _this.rejector = rejector;
+        });
     }
+    UsrMsgDetails.prototype.resolve = function () {
+        if (this.resolver != null)
+            this.resolver();
+    };
+    UsrMsgDetails.prototype.reject = function () {
+        if (this.rejector != null)
+            this.rejector();
+    };
     return UsrMsgDetails;
 }());
 export { UsrMsgDetails };
@@ -41,16 +74,23 @@ var Ng2BalloonMsgService = (function () {
         return this.observable;
     };
     Ng2BalloonMsgService.prototype.showError = function (msg) {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Error));
+        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Error, UsrMsgType.Sticky));
     };
     Ng2BalloonMsgService.prototype.showWarning = function (msg) {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Warning));
+        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Warning, UsrMsgType.Fleeting));
     };
     Ng2BalloonMsgService.prototype.showInfo = function (msg) {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Info));
+        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Info, UsrMsgType.Fleeting));
     };
     Ng2BalloonMsgService.prototype.showSuccess = function (msg) {
-        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Success));
+        this.observer.next(new UsrMsgDetails(msg, UsrMsgLevel.Success, UsrMsgType.Fleeting));
+    };
+    Ng2BalloonMsgService.prototype.showMessage = function (msg, level, type, confirmText, cancelText) {
+        if (confirmText === void 0) { confirmText = "Confirm"; }
+        if (cancelText === void 0) { cancelText = "Cancel"; }
+        var msgObj = new UsrMsgDetails(msg, level, type, confirmText, cancelText);
+        this.observer.next(msgObj);
+        return msgObj.promise;
     };
     return Ng2BalloonMsgService;
 }());

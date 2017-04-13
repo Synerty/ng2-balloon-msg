@@ -1,12 +1,50 @@
-<div (click)="clicked()">
-    <div *ngIf="shown">
-        <div class="alert"
-             [class.alert-success]="msgDetails.isSuccess()"
-             [class.alert-info]="msgDetails.isInfo()"
-             [class.alert-warning]="msgDetails.isWarning()"
-             [class.alert-danger]="msgDetails.isError()"
-             >
-            <span>{{msgDetails.msg}}</span>
+<div *ngIf="shown">
+
+    <div *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
+        <div (click)="msgClicked()">
+            <div class="alert"
+                 [class.alert-success]="msgDetails.isSuccess()"
+                 [class.alert-info]="msgDetails.isInfo()"
+                 [class.alert-warning]="msgDetails.isWarning()"
+                 [class.alert-danger]="msgDetails.isError()">
+                <span>{{msgDetails.msg}}</span>
+            </div>
         </div>
+    </div>
+
+
+    <div *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()">
+        <div class="modal fade" tabindex="-1" role="dialog"
+             id="ng2BalloonMsg{{msgDetails.msgId}}"
+             data-backdrop="false"
+             data-keyboard="false"
+             data-show="true"
+                 [class.bg-success]="msgDetails.isSuccess()"
+                 [class.bg-info]="msgDetails.isInfo()"
+                 [class.bg-warning]="msgDetails.isWarning()"
+                 [class.bg-danger]="msgDetails.isError()">
+            <div class="modal-dialog panel" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" *ngIf="msgDetails.dialogTitle !=  null">
+                        <h4 class="modal-title">{{msgDetails.dialogTitle}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{msgDetails.msg}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button *ngIf="msgDetails.isConfirmCancel()"
+                                (click)="cancelClicked()"
+                                type="button" class="btn btn-default">
+                            {{msgDetails.cancelText}}
+                        </button>
+                        <button type="button" class="btn btn-primary"
+                                (click)="confirmClicked()">
+                            {{msgDetails.confirmText}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

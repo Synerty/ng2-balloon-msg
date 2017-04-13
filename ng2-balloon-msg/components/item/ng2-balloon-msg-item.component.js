@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input, trigger, transition, state, animate, style } from "@angular/core";
-import { UsrMsgDetails, UsrMsgLevel } from "../../services/service/ng2-balloon-msg.service";
+import { animate, Component, Input, state, style, transition, trigger } from "@angular/core";
+import { UsrMsgDetails } from "../../services/ng2-balloon-msg.service";
 var Ng2BalloonMsgItemComponent = (function () {
     function Ng2BalloonMsgItemComponent() {
         this.shown = true;
@@ -20,19 +20,29 @@ var Ng2BalloonMsgItemComponent = (function () {
     Ng2BalloonMsgItemComponent.prototype.ngOnInit = function () {
         var _this = this;
         // Hide the message after a certain period.
-        if (this.msgDetails.type !== UsrMsgLevel.Error) {
+        if (this.msgDetails.isSticky()) {
             setTimeout(function () { return _this.shown = false; }, this.showDuration);
             setTimeout(function () { return _this.msgDetails.expired = true; }, this.expireDuration);
         }
     };
-    Ng2BalloonMsgItemComponent.prototype.clicked = function () {
+    Ng2BalloonMsgItemComponent.prototype.msgClicked = function () {
         this.msgDetails.expired = true;
+    };
+    Ng2BalloonMsgItemComponent.prototype.okClicked = function () {
+        this.msgDetails.resolve();
+        this.msgDetails.expired = true;
+        this.shown = false;
+    };
+    Ng2BalloonMsgItemComponent.prototype.cancelClicked = function () {
+        this.msgDetails.reject();
+        this.msgDetails.expired = true;
+        this.shown = false;
     };
     return Ng2BalloonMsgItemComponent;
 }());
 __decorate([
     Input(),
-    __metadata("design:type", typeof (_a = typeof UsrMsgDetails !== "undefined" && UsrMsgDetails) === "function" && _a || Object)
+    __metadata("design:type", UsrMsgDetails)
 ], Ng2BalloonMsgItemComponent.prototype, "msgDetails", void 0);
 Ng2BalloonMsgItemComponent = __decorate([
     Component({
@@ -49,5 +59,4 @@ Ng2BalloonMsgItemComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], Ng2BalloonMsgItemComponent);
 export { Ng2BalloonMsgItemComponent };
-var _a;
 //# sourceMappingURL=/home/peek/project/ng2-balloon-msg/ng2-balloon-msg/components/item/ng2-balloon-msg-item.component.js.map

@@ -1,14 +1,16 @@
 import {
+    AfterViewInit,
+    animate,
     Component,
     Input,
-    trigger,
-    transition,
+    OnInit,
     state,
-    animate,
     style,
-    OnInit
+    transition,
+    trigger
 } from "@angular/core";
-import {UsrMsgDetails, UsrMsgLevel} from "../../services/service/ng2-balloon-msg.service";
+import {UsrMsgDetails} from "../../services/ng2-balloon-msg.service";
+
 
 @Component({
     selector: 'ng2-balloon-msg-item',
@@ -21,7 +23,7 @@ import {UsrMsgDetails, UsrMsgLevel} from "../../services/service/ng2-balloon-msg
         ])
     ],
 })
-export class Ng2BalloonMsgItemComponent implements OnInit {
+export class Ng2BalloonMsgItemComponent implements OnInit, AfterViewInit {
 
     @Input()
     msgDetails: UsrMsgDetails;
@@ -41,15 +43,31 @@ export class Ng2BalloonMsgItemComponent implements OnInit {
 
     ngOnInit() {
         // Hide the message after a certain period.
-        if (this.msgDetails.type !== UsrMsgLevel.Error) {
+        if (this.msgDetails.isFleeting()) {
             setTimeout(() => this.shown = false, this.showDuration);
             setTimeout(() => this.msgDetails.expired = true, this.expireDuration);
         }
 
     }
 
-    clicked(): void {
+    ngAfterViewInit() {
+        $('#ng2BalloonMsg' + this.msgDetails.msgId)["modal"]('show');
+    }
+
+    msgClicked(): void {
         this.msgDetails.expired = true;
+    }
+
+    confirmClicked(): void {
+        this.msgDetails.resolve();
+        this.msgDetails.expired = true;
+        this.shown = false;
+    }
+
+    cancelClicked(): void {
+        this.msgDetails.reject();
+        this.msgDetails.expired = true;
+        this.shown = false;
     }
 
 }
