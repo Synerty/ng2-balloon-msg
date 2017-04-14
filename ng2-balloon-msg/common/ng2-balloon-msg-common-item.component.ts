@@ -8,6 +8,10 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
     msgDetails: UsrMsgDetails;
 
     shown: boolean = true;
+    shownStr: string = "shown";
+
+    // in ms, The time it takes for change of animation state
+    protected readonly animationDuration = 500;
 
     // in ms, The time it takes before it fades out
     protected readonly showDuration = 2000;
@@ -21,9 +25,13 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
     }
 
     ngOnInit() {
+
         // Hide the message after a certain period.
         if (this.msgDetails.isFleeting()) {
-            setTimeout(() => this.shown = false, this.showDuration);
+            setTimeout(() => {
+                this.shown = false;
+                this.shownStr = "hidden";
+            }, this.showDuration);
             setTimeout(() => this.msgDetails.expired = true, this.expireDuration);
         }
 
@@ -34,15 +42,21 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
     }
 
     confirmClicked(): void {
-        this.msgDetails.resolve();
-        this.msgDetails.expired = true;
-        this.shown = false;
+        this.shownStr = "hidden";
+        setTimeout(() => {
+            this.msgDetails.resolve();
+            this.msgDetails.expired = true;
+            this.shown = false;
+        }, this.animationDuration);
     }
 
     cancelClicked(): void {
-        this.msgDetails.reject();
-        this.msgDetails.expired = true;
-        this.shown = false;
+        this.shownStr = "hidden";
+        setTimeout(() => {
+            this.msgDetails.reject();
+            this.msgDetails.expired = true;
+            this.shown = false;
+        }, this.animationDuration);
     }
 
 }

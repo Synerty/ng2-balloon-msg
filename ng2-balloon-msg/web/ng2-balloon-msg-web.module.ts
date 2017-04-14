@@ -5,7 +5,7 @@ import {Ng2BalloonMsgQueueComponent} from "./queue/ng2-balloon-msg-web-queue.com
 
 @NgModule({
     imports: [
-        CommonModule,
+        CommonModule
     ],
     exports: [
         Ng2BalloonMsgQueueComponent,

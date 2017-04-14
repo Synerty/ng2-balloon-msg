@@ -1,4 +1,8 @@
-<StackLayout *ngIf="shown"
+<Label text="message"></Label>
+
+<StackLayout class="example"
+             *ngIf="shown"
+             [@visibilityChanged]="shownStr"
              [class.bg-success]="msgDetails.isSuccess()"
              [class.bg-info]="msgDetails.isInfo()"
              [class.bg-warning]="msgDetails.isWarning()"

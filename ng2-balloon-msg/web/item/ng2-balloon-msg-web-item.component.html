@@ -1,6 +1,7 @@
-<div *ngIf="shown">
+<div>
 
-    <div *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
+    <div *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()"
+         [@msgPopup]="shownStr">
         <div (click)="msgClicked()">
             <div class="alert"
                  [class.alert-success]="msgDetails.isSuccess()"
@@ -12,17 +13,17 @@
         </div>
     </div>
 
-
     <div *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()">
-        <div class="modal fade" tabindex="-1" role="dialog"
+        <div class="modal" tabindex="-1" role="dialog"
+             [@msgDialog]="shownStr"
              id="ng2BalloonMsg{{msgDetails.msgId}}"
              data-backdrop="false"
              data-keyboard="false"
              data-show="true"
-                 [class.bg-success]="msgDetails.isSuccess()"
-                 [class.bg-info]="msgDetails.isInfo()"
-                 [class.bg-warning]="msgDetails.isWarning()"
-                 [class.bg-danger]="msgDetails.isError()">
+             [class.bg-success]="msgDetails.isSuccess()"
+             [class.bg-info]="msgDetails.isInfo()"
+             [class.bg-warning]="msgDetails.isWarning()"
+             [class.bg-danger]="msgDetails.isError()">
             <div class="modal-dialog panel" role="document">
                 <div class="modal-content">
                     <div class="modal-header" *ngIf="msgDetails.dialogTitle !=  null">
@@ -45,6 +46,7 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+
 </div>
