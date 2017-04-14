@@ -1,0 +1,39 @@
+<StackLayout *ngIf="shown"
+             [class.bg-success]="msgDetails.isSuccess()"
+             [class.bg-info]="msgDetails.isInfo()"
+             [class.bg-warning]="msgDetails.isWarning()"
+             [class.bg-danger]="msgDetails.isError()"
+             class="p-10">
+
+    <StackLayout *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()"
+                 (tap)="msgClicked()">
+        <Label class="input input-border"
+               [text]="msgDetails.msg">
+        </Label>
+    </StackLayout>
+
+    <GridLayout width="100%" height="100%"
+                *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()"
+                rows="auto, *, auto" columns="*, *">
+
+
+        <Label col="0" row="0" colSpan="2"
+               *ngIf="msgDetails.dialogTitle !=  null"
+               [text]="msgDetails.dialogTitle"
+               class="h1 text-center"></Label>
+
+        <Label col="0" row="1" colSpan="2"
+               [text]="msgDetails.msg" class="h3" textWrap="true"></Label>
+
+        <button col="0" row="2"
+                *ngIf="msgDetails.isConfirmCancel()"
+                (tap)="cancelClicked()"
+                [text]="msgDetails.cancelText">
+        </button>
+        <button col="1" row="2"
+                (tap)="confirmClicked()"
+                [text]="msgDetails.confirmText">
+        </button>
+    </GridLayout>
+
+</StackLayout>

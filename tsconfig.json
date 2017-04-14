@@ -1,19 +1,25 @@
 {
-  "strictNullChecks": true,
-  "allowUnreachableCode": true,
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "",
+    "noEmitOnError": false,
+    "baseUrl": "build-web/src",
+    "sourceMap": true,
     "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
-    "mapRoot": "./",
-    "module": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
     "target": "es5",
     "typeRoots": [
-      "../node_modules/@types"
+      "build-web/node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
     ]
-  }
+  },
+  "exclude": [
+    "build-ns",
+    "build-web",
+    "node_modules"
+  ]
 }

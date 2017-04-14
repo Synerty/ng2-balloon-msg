@@ -80,6 +80,23 @@ Now call the show functions
         this.msgService.showWarning("This is a test warning");
         this.msgService.showError("This is a test error");
 
+You can also create modal dialogs
+
+        let p = this.msgService.showMessage(
+            "This is a Error Confirm Cancel.",
+            UsrMsgLevel.Error,
+            UsrMsgType.ConfirmCancel, {
+                confirmText: "OK Confirm",      // Optional
+                cancelText: "Cancel xx",        // Optional
+                dialogTitle: "Awesome title"    // Optional
+        
+            }
+        );
+        
+        p.catch(err => {
+            console.log("Ignoring reject call from promise for this test.");
+        });
+
 
 ## Scaffold
 

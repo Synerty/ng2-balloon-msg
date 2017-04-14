@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Observable, Observer} from "rxjs";
+import {Subject} from "rxjs";
 
 export enum UsrMsgLevel {
     Error = 1,
@@ -50,6 +50,7 @@ export class UsrMsgDetails {
     // Type
     isFleeting = () => this.type === UsrMsgType.Fleeting;
     isSticky = () => this.type === UsrMsgType.Sticky;
+    isModal = () => this.isConfirm() || this.isConfirmCancel();
     isConfirm = () => this.type === UsrMsgType.Confirm;
     isConfirmCancel = () => this.type === UsrMsgType.ConfirmCancel;
 
@@ -74,13 +75,12 @@ export interface UsrMsgParams {
 
 @Injectable()
 export class Ng2BalloonMsgService {
-    private observable: Observable<UsrMsgDetails>;
-    private observer: Observer<UsrMsgDetails>;
+    private observable: Subject<UsrMsgDetails>;
 
     constructor() {
-        this.observable = Observable.create(observer => this.observer = observer);
-        // Call subscribe, otherwise the observer is never created
-        this.observable.subscribe();
+        this.observable = new Subject<UsrMsgDetails>();
+
+        console.log("Creating Ng2BalloonMsgService.")
     }
 
     getObservable() {
@@ -88,22 +88,22 @@ export class Ng2BalloonMsgService {
     }
 
     showError(msg: string): void {
-        this.observer.next(new UsrMsgDetails(
+        this.observable.next(new UsrMsgDetails(
             msg, UsrMsgLevel.Error, UsrMsgType.Sticky));
     }
 
     showWarning(msg: string): void {
-        this.observer.next(new UsrMsgDetails(
+        this.observable.next(new UsrMsgDetails(
             msg, UsrMsgLevel.Warning, UsrMsgType.Fleeting));
     }
 
     showInfo(msg: string): void {
-        this.observer.next(new UsrMsgDetails(
+        this.observable.next(new UsrMsgDetails(
             msg, UsrMsgLevel.Info, UsrMsgType.Fleeting));
     }
 
     showSuccess(msg: string): void {
-        this.observer.next(new UsrMsgDetails(
+        this.observable.next(new UsrMsgDetails(
             msg, UsrMsgLevel.Success, UsrMsgType.Fleeting));
     }
 
@@ -112,7 +112,7 @@ export class Ng2BalloonMsgService {
 
         let {confirmText, cancelText, dialogTitle} = parameters;
         let msgObj = new UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle);
-        this.observer.next(msgObj);
+        this.observable.next(msgObj);
         return msgObj.promise;
     }
 
