@@ -23,14 +23,16 @@
   "homepage": "https://github.com/Synerty/ng2-balloon-msg#readme",
   "private": false,
   "dependencies": {
-    "@angular/common": "^2.4.0",
-    "@angular/core": "^2.4.0",
-    "@angular/router": "^3.4.0",
+    "@angular/animations": "^4.0.0",
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "core-js": "^2.4.1",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.7.6"
+    "rxjs": "~5.2.0",
+    "zone.js": "~0.8.2"
   },
   "devDependencies": {}
 }
