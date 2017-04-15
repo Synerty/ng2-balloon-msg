@@ -1,1 +1,53 @@
 
+.visible {
+    animation-name: show;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translate(0, 200);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.hide {
+    animation-name: animate-hide;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes animate-hide {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate(0, -200);
+    }
+
+}
+
+.bg-info {
+    background-color: #d9edf7;
+}
+
+.bg-success {
+    background-color: #dff0d8;
+}
+
+.bg-warning {
+    background-color: #fcf8e3;
+}
+
+.bg-danger {
+    background-color: #f2dede;
+}

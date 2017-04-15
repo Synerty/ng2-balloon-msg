@@ -1,10 +1,17 @@
-<StackLayout class="m-10">
-<ng2-balloon-msg-ns></ng2-balloon-msg-ns>
-    <Label class="h2" text="Exmaple usage"></Label>
+<!-- Using a grid layout with no columns or rows allows the message layout to
+    display over the top -->
+<GridLayout>
+
+    <StackLayout class="m-10">
+        <Label class="h2" text="Exmaple usage"></Label>
 
 
-    <Label class="" text="Here are some test component buttons to try it out"></Label>
+        <Label class="" text="Here are some test component buttons to try it out"></Label>
 
-    <ng2-balloon-msg-ns-test></ng2-balloon-msg-ns-test>
+        <ng2-balloon-msg-ns-test></ng2-balloon-msg-ns-test>
 
-</StackLayout>
+    </StackLayout>
+
+    <!-- This must be down the bottom, otherwise the messages don't cover the content -->
+    <ng2-balloon-msg-ns></ng2-balloon-msg-ns>
+</GridLayout>

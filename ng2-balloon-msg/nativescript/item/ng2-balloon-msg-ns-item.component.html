@@ -1,19 +1,14 @@
-<Label text="message"></Label>
-
-<StackLayout class="example"
-             *ngIf="shown"
-             [@visibilityChanged]="shownStr"
-             [class.bg-success]="msgDetails.isSuccess()"
+<StackLayout [class.bg-success]="msgDetails.isSuccess()"
              [class.bg-info]="msgDetails.isInfo()"
              [class.bg-warning]="msgDetails.isWarning()"
              [class.bg-danger]="msgDetails.isError()"
-             class="p-10">
+             class="p-10"
+             [class.visible]="shownStr == 'shown'"
+             [class.hide]="shownStr == 'hidden'">
 
     <StackLayout *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()"
                  (tap)="msgClicked()">
-        <Label class="input input-border"
-               [text]="msgDetails.msg">
-        </Label>
+        <Label class="" [text]="msgDetails.msg"></Label>
     </StackLayout>
 
     <GridLayout width="100%" height="100%"
