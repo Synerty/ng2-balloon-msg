@@ -1,4 +1,5 @@
-import {Component, ViewChild, ElementRef} from "@angular/core";
+import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 import {Ng2BalloonMsgCommonItemComponent} from "../../common/ng2-balloon-msg-common-item.component";
 
 
@@ -10,16 +11,8 @@ import {Ng2BalloonMsgCommonItemComponent} from "../../common/ng2-balloon-msg-com
 })
 export class Ng2BalloonMsgNsItemComponent extends Ng2BalloonMsgCommonItemComponent {
 
-
-    @ViewChild('popupRef') popupRef: ElementRef;
-    popupMaxHeight = "auto";
-
-    constructor() {
-        super();
+    constructor(protected router: Router) {
+        super(router);
 
     }
-
-
-
-
 }

@@ -31,7 +31,8 @@ export class UsrMsgDetails {
                 public type: UsrMsgType,
                 public confirmText: string | null = null,
                 public cancelText: string | null = null,
-                public dialogTitle: string | null = null) {
+                public dialogTitle: string | null = null,
+                public routePath: string | null = null) {
         this.msgId = UsrMsgDetails.nextMsgId++;
 
         this.promise = new Promise<null>((resolver, rejector) => {
@@ -42,17 +43,50 @@ export class UsrMsgDetails {
     }
 
     // Level
-    isSuccess = () => this.level === UsrMsgLevel.Success;
-    isInfo = () => this.level === UsrMsgLevel.Info;
-    isWarning = () => this.level === UsrMsgLevel.Warning;
-    isError = () => this.level === UsrMsgLevel.Error;
+    isSuccess() {
+        return this.level === UsrMsgLevel.Success;
+    };
+
+    isInfo() {
+        return this.level === UsrMsgLevel.Info;
+    }
+
+    isWarning() {
+        return this.level === UsrMsgLevel.Warning;
+    }
+
+    isError() {
+        return this.level === UsrMsgLevel.Error;
+    }
+
 
     // Type
-    isFleeting = () => this.type === UsrMsgType.Fleeting;
-    isSticky = () => this.type === UsrMsgType.Sticky;
-    isModal = () => this.isConfirm() || this.isConfirmCancel();
-    isConfirm = () => this.type === UsrMsgType.Confirm;
-    isConfirmCancel = () => this.type === UsrMsgType.ConfirmCancel;
+    isFleeting() {
+        return this.type === UsrMsgType.Fleeting;
+    }
+
+    isSticky() {
+        return this.type === UsrMsgType.Sticky;
+    }
+
+    isConfirm() {
+        return this.type === UsrMsgType.Confirm;
+    }
+
+    isConfirmCancel() {
+        return this.type === UsrMsgType.ConfirmCancel;
+    }
+
+
+    // Other
+    isModal() {
+        return this.isConfirm() || this.isConfirmCancel();
+    }
+
+    hasRoute() {
+        return this.routePath != null;
+    }
+
 
     resolve() {
         if (this.resolver != null)
@@ -70,7 +104,8 @@ export class UsrMsgDetails {
 export interface UsrMsgParams {
     confirmText?: string | null,
     cancelText?: string | null,
-    dialogTitle?: string | null
+    dialogTitle?: string | null,
+    routePath?: string | null
 }
 
 @Injectable()
@@ -87,31 +122,32 @@ export class Ng2BalloonMsgService {
         return this.observable;
     }
 
-    showError(msg: string): void {
+    showError(msg: string, routePath?: string | null): void {
         this.observable.next(new UsrMsgDetails(
-            msg, UsrMsgLevel.Error, UsrMsgType.Sticky));
+            msg, UsrMsgLevel.Error, UsrMsgType.Sticky, null, null, null, routePath));
     }
 
-    showWarning(msg: string): void {
+    showWarning(msg: string, routePath?: string | null): void {
         this.observable.next(new UsrMsgDetails(
-            msg, UsrMsgLevel.Warning, UsrMsgType.Fleeting));
+            msg, UsrMsgLevel.Warning, UsrMsgType.Fleeting, null, null, null, routePath));
     }
 
-    showInfo(msg: string): void {
+    showInfo(msg: string, routePath?: string | null): void {
         this.observable.next(new UsrMsgDetails(
-            msg, UsrMsgLevel.Info, UsrMsgType.Fleeting));
+            msg, UsrMsgLevel.Info, UsrMsgType.Fleeting, null, null, null, routePath));
     }
 
-    showSuccess(msg: string): void {
+    showSuccess(msg: string, routePath?: string | null): void {
         this.observable.next(new UsrMsgDetails(
-            msg, UsrMsgLevel.Success, UsrMsgType.Fleeting));
+            msg, UsrMsgLevel.Success, UsrMsgType.Fleeting, null, null, null, routePath));
     }
 
     showMessage(msg: string, level: UsrMsgLevel, type: UsrMsgType,
                 parameters?: UsrMsgParams): Promise<null> {
 
-        let {confirmText, cancelText, dialogTitle} = parameters;
-        let msgObj = new UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle);
+        let {confirmText, cancelText, dialogTitle, routePath} = parameters;
+        let msgObj = new UsrMsgDetails(msg, level, type,
+            confirmText, cancelText, dialogTitle, routePath);
         this.observable.next(msgObj);
         return msgObj.promise;
     }

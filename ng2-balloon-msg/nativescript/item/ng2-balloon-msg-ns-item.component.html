@@ -6,10 +6,13 @@
              [class.visible]="shownStr == 'shown'"
              [class.hide]="shownStr == 'hidden'">
 
-    <StackLayout *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()"
-                 (tap)="msgClicked()">
-        <Label class="" [text]="msgDetails.msg"></Label>
-    </StackLayout>
+    <GridLayout width="100%" rows="auto" columns="*, auto"
+            *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
+        <Label class="" [text]="msgDetails.msg" row="0" col="0"
+                 (tap)="msgClicked()"></Label>
+        <Button class="" text="Open" row="0" col="1" *ngIf="msgDetails.hasRoute()"
+               (tap)="openClicked()"></Button>
+    </GridLayout>
 
     <GridLayout width="100%" height="100%"
                 *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()"

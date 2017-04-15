@@ -1,4 +1,5 @@
 import {Input, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 import {UsrMsgDetails} from "../services/ng2-balloon-msg.service";
 
 
@@ -20,7 +21,7 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
     protected readonly expireDuration = 3000; // showDuration + fade in/out time
 
 
-    constructor() {
+    constructor(protected router: Router) {
 
     }
 
@@ -41,13 +42,24 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
         this.msgDetails.expired = true;
     }
 
+    openClicked(): void {
+        this.msgDetails.expired = true;
+        this.router.navigate([this.msgDetails.routePath]);
+    }
+
     confirmClicked(): void {
         this.shownStr = "hidden";
+        // Add 100ms to allow animations to complete
         setTimeout(() => {
             this.msgDetails.resolve();
             this.msgDetails.expired = true;
             this.shown = false;
-        }, this.animationDuration);
+
+            // Route when they click ok
+            if (this.msgDetails.hasRoute())
+                this.router.navigate([this.msgDetails.routePath]);
+
+        }, this.animationDuration + 100);
     }
 
     cancelClicked(): void {
@@ -56,7 +68,7 @@ export class Ng2BalloonMsgCommonItemComponent implements OnInit {
             this.msgDetails.reject();
             this.msgDetails.expired = true;
             this.shown = false;
-        }, this.animationDuration);
+        }, this.animationDuration + 100);
     }
 
 }
