@@ -8,17 +8,22 @@ import {AppComponent} from "./app.component";
 import {Ng2BalloonMsgModule} from "../../../index.web";
 import {Ng2BalloonMsgService} from "../../../";
 import {Ng2BalloonMsgTestComponent} from "./test/ng2-balloon-msg-test.component";
+import {ArouteComponent} from "./aroute/aroute.component";
+import {AppRoutingModule} from "./app.routing";
 
 @NgModule({
     declarations: [
         AppComponent,
-        Ng2BalloonMsgTestComponent
+        Ng2BalloonMsgTestComponent,
+        ArouteComponent
+
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        Ng2BalloonMsgModule
+        Ng2BalloonMsgModule,
+        AppRoutingModule
     ],
     providers: [Ng2BalloonMsgService],
     bootstrap: [AppComponent]

@@ -8,7 +8,11 @@
                  [class.alert-info]="msgDetails.isInfo()"
                  [class.alert-warning]="msgDetails.isWarning()"
                  [class.alert-danger]="msgDetails.isError()">
-                <span>{{msgDetails.msg}}</span>
+                <span>{{msgDetails.msg}}<Button
+                        type="button" class="btn btn-default invisible"
+                        *ngIf="msgDetails.hasRoute()">&nbsp;</Button><Button
+                        type="button" class="btn btn-default pull-right" (click)="openClicked()"
+                        *ngIf="msgDetails.hasRoute()">Open</Button></span>
             </div>
         </div>
     </div>

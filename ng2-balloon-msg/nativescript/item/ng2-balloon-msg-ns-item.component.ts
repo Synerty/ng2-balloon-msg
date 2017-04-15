@@ -13,6 +13,5 @@ export class Ng2BalloonMsgNsItemComponent extends Ng2BalloonMsgCommonItemCompone
 
     constructor(protected router: Router) {
         super(router);
-
     }
 }

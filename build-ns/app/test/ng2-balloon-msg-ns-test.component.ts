@@ -31,22 +31,22 @@ export class Ng2BalloonMsgNsTestComponent {
         this.msgService.showError("This is a test error. Click to dismiss");
     }
 
-    showSuccessConfirm() {
-        let p = this.msgService.showMessage(
-            "This is a Warning confirm with route.",
-            UsrMsgLevel.Success,
-            UsrMsgType.Confirm, {
-                confirmText: "OK Confirm"
-            });
-    }
-
     showWarningConfirmWithRoute() {
         let p = this.msgService.showMessage(
-            "This is a success confirm.",
+            "This is a Warning confirm with route.",
             UsrMsgLevel.Warning,
             UsrMsgType.Confirm, {
                 confirmText: "OK Confirm",
                 routePath: '/aroute'
+            });
+    }
+
+    showSuccessConfirm() {
+        let p = this.msgService.showMessage(
+            "This is a success confirm.",
+            UsrMsgLevel.Success,
+            UsrMsgType.Confirm, {
+                confirmText: "OK Confirm"
             });
     }
 

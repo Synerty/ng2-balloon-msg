@@ -7,6 +7,7 @@ import {
     transition,
     trigger
 } from "@angular/core";
+import {Router} from "@angular/router";
 import {Ng2BalloonMsgCommonItemComponent} from "../../common/ng2-balloon-msg-common-item.component";
 
 
@@ -57,10 +58,12 @@ import {Ng2BalloonMsgCommonItemComponent} from "../../common/ng2-balloon-msg-com
 })
 export class Ng2BalloonMsgItemComponent extends Ng2BalloonMsgCommonItemComponent implements AfterViewInit {
 
+    constructor(protected router: Router) {
+        super(router);
+    }
 
     ngAfterViewInit() {
         $('#ng2BalloonMsg' + this.msgDetails.msgId)["modal"]('show');
     }
-
 
 }
