@@ -18,7 +18,7 @@ var Ng2BalloonMsgModule = (function () {
 Ng2BalloonMsgModule = __decorate([
     core_1.NgModule({
         imports: [
-            common_1.CommonModule,
+            common_1.CommonModule
         ],
         exports: [
             ng2_balloon_msg_web_queue_component_1.Ng2BalloonMsgQueueComponent,

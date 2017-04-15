@@ -1,4 +1,24 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng2_balloon_msg_common_item_component_1 = require("../../common/ng2-balloon-msg-common-item.component");
@@ -21,4 +41,4 @@ Ng2BalloonMsgNsItemComponent = __decorate([
     __metadata("design:paramtypes", [router_1.Router])
 ], Ng2BalloonMsgNsItemComponent);
 exports.Ng2BalloonMsgNsItemComponent = Ng2BalloonMsgNsItemComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmcyLWJhbGxvb24tbXNnLW5zLWl0ZW0uY29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmcyLWJhbGxvb24tbXNnLW5zLWl0ZW0uY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxzQ0FBd0M7QUFDeEMsMENBQXVDO0FBQ3ZDLDRHQUFvRztBQVNwRyxJQUFhLDRCQUE0QjtJQUFTLGdEQUFnQztJQUU5RSxzQ0FBc0IsTUFBYztRQUFwQyxZQUNJLGtCQUFNLE1BQU0sQ0FBQyxTQUNoQjtRQUZxQixZQUFNLEdBQU4sTUFBTSxDQUFROztJQUVwQyxDQUFDO0lBQ0wsbUNBQUM7QUFBRCxDQUFDLEFBTEQsQ0FBa0Qsd0VBQWdDLEdBS2pGO0FBTFksNEJBQTRCO0lBTnhDLGdCQUFTLENBQUM7UUFDUCxRQUFRLEVBQUUseUJBQXlCO1FBQ25DLFdBQVcsRUFBRSwwQ0FBMEM7UUFDdkQsU0FBUyxFQUFFLENBQUMseUNBQXlDLENBQUM7UUFDdEQsUUFBUSxFQUFFLE1BQU0sQ0FBQyxFQUFFO0tBQ3RCLENBQUM7cUNBR2dDLGVBQU07R0FGM0IsNEJBQTRCLENBS3hDO0FBTFksb0VBQTRCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQge1JvdXRlcn0gZnJvbSBcIkBhbmd1bGFyL3JvdXRlclwiO1xuaW1wb3J0IHtOZzJCYWxsb29uTXNnQ29tbW9uSXRlbUNvbXBvbmVudH0gZnJvbSBcIi4uLy4uL2NvbW1vbi9uZzItYmFsbG9vbi1tc2ctY29tbW9uLWl0ZW0uY29tcG9uZW50XCI7XG5cblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6ICduZzItYmFsbG9vbi1tc2ctaXRlbS1ucycsXG4gICAgdGVtcGxhdGVVcmw6ICcuL25nMi1iYWxsb29uLW1zZy1ucy1pdGVtLmNvbXBvbmVudC5odG1sJyxcbiAgICBzdHlsZVVybHM6IFsnLi9uZzItYmFsbG9vbi1tc2ctbnMtaXRlbS5jb21wb25lbnQuY3NzJ10sXG4gICAgbW9kdWxlSWQ6IG1vZHVsZS5pZFxufSlcbmV4cG9ydCBjbGFzcyBOZzJCYWxsb29uTXNnTnNJdGVtQ29tcG9uZW50IGV4dGVuZHMgTmcyQmFsbG9vbk1zZ0NvbW1vbkl0ZW1Db21wb25lbnQge1xuXG4gICAgY29uc3RydWN0b3IocHJvdGVjdGVkIHJvdXRlcjogUm91dGVyKSB7XG4gICAgICAgIHN1cGVyKHJvdXRlcik7XG4gICAgfVxufVxuIl19
+//# sourceMappingURL=ng2-balloon-msg-ns-item.component.js.map

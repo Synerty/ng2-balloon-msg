@@ -1,4 +1,24 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ng2_balloon_msg_common_queue_component_1 = require("../../common/ng2-balloon-msg-common-queue.component");
 var ng2_balloon_msg_service_1 = require("../../services/ng2-balloon-msg.service");
@@ -19,4 +39,4 @@ Ng2BalloonMsgNsQueueComponent = __decorate([
     __metadata("design:paramtypes", [ng2_balloon_msg_service_1.Ng2BalloonMsgService])
 ], Ng2BalloonMsgNsQueueComponent);
 exports.Ng2BalloonMsgNsQueueComponent = Ng2BalloonMsgNsQueueComponent;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmcyLWJhbGxvb24tbXNnLW5zLXF1ZXVlLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nMi1iYWxsb29uLW1zZy1ucy1xdWV1ZS5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHNDQUF3QztBQUN4Qyw4R0FBc0c7QUFDdEcsa0ZBQTRFO0FBUzVFLElBQWEsNkJBQTZCO0lBQVMsaURBQWlDO0lBRWhGLHVDQUFZLFVBQWdDO2VBQ3hDLGtCQUFNLFVBQVUsQ0FBQztJQUNyQixDQUFDO0lBQ0wsb0NBQUM7QUFBRCxDQUFDLEFBTEQsQ0FBbUQsMEVBQWlDLEdBS25GO0FBTFksNkJBQTZCO0lBTnpDLGdCQUFTLENBQUM7UUFDUCxRQUFRLEVBQUUsb0JBQW9CO1FBQzlCLFdBQVcsRUFBRSwyQ0FBMkM7UUFDeEQsU0FBUyxFQUFFLENBQUMsMENBQTBDLENBQUM7UUFDdkQsUUFBUSxFQUFFLE1BQU0sQ0FBQyxFQUFFO0tBQ3RCLENBQUM7cUNBRzBCLDhDQUFvQjtHQUZuQyw2QkFBNkIsQ0FLekM7QUFMWSxzRUFBNkIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7TmcyQmFsbG9vbk1zZ0NvbW1vblF1ZXVlQ29tcG9uZW50fSBmcm9tIFwiLi4vLi4vY29tbW9uL25nMi1iYWxsb29uLW1zZy1jb21tb24tcXVldWUuY29tcG9uZW50XCI7XG5pbXBvcnQge05nMkJhbGxvb25Nc2dTZXJ2aWNlfSBmcm9tIFwiLi4vLi4vc2VydmljZXMvbmcyLWJhbGxvb24tbXNnLnNlcnZpY2VcIjtcblxuXG5AQ29tcG9uZW50KHtcbiAgICBzZWxlY3RvcjogJ25nMi1iYWxsb29uLW1zZy1ucycsXG4gICAgdGVtcGxhdGVVcmw6ICcuL25nMi1iYWxsb29uLW1zZy1ucy1xdWV1ZS5jb21wb25lbnQuaHRtbCcsXG4gICAgc3R5bGVVcmxzOiBbJy4vbmcyLWJhbGxvb24tbXNnLW5zLXF1ZXVlLmNvbXBvbmVudC5jc3MnXSxcbiAgICBtb2R1bGVJZDogbW9kdWxlLmlkXG59KVxuZXhwb3J0IGNsYXNzIE5nMkJhbGxvb25Nc2dOc1F1ZXVlQ29tcG9uZW50IGV4dGVuZHMgTmcyQmFsbG9vbk1zZ0NvbW1vblF1ZXVlQ29tcG9uZW50IHtcblxuICAgIGNvbnN0cnVjdG9yKG1zZ1NlcnZpY2U6IE5nMkJhbGxvb25Nc2dTZXJ2aWNlKSB7XG4gICAgICAgIHN1cGVyKG1zZ1NlcnZpY2UpO1xuICAgIH1cbn1cbiJdfQ==
+//# sourceMappingURL=ng2-balloon-msg-ns-queue.component.js.map

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ng2_balloon_msg_ns_module_1 = require("./ng2-balloon-msg/nativescript/ng2-balloon-msg-ns.module");
 exports.Ng2BalloonMsgNsModule = ng2_balloon_msg_ns_module_1.Ng2BalloonMsgNsModule;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXgubmF0aXZlc2NyaXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiaW5kZXgubmF0aXZlc2NyaXB0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxzR0FBK0Y7QUFBdkYsNERBQUEscUJBQXFCLENBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQge05nMkJhbGxvb25Nc2dOc01vZHVsZX0gZnJvbSBcIi4vbmcyLWJhbGxvb24tbXNnL25hdGl2ZXNjcmlwdC9uZzItYmFsbG9vbi1tc2ctbnMubW9kdWxlXCI7Il19
+//# sourceMappingURL=index.nativescript.js.map
