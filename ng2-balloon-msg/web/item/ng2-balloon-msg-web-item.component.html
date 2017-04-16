@@ -8,10 +8,11 @@
                  [class.alert-info]="msgDetails.isInfo()"
                  [class.alert-warning]="msgDetails.isWarning()"
                  [class.alert-danger]="msgDetails.isError()">
-                <span>{{msgDetails.msg}}<Button
+                <span style="white-space: pre-wrap">{{msgDetails.msg}}<Button
                         type="button" class="btn btn-default invisible"
                         *ngIf="msgDetails.hasRoute()">&nbsp;</Button><Button
-                        type="button" class="btn btn-default pull-right" (click)="openClicked()"
+                        type="button" class="btn btn-default pull-right"
+                        (click)="openClicked()"
                         *ngIf="msgDetails.hasRoute()">Open</Button></span>
             </div>
         </div>
@@ -34,7 +35,7 @@
                         <h4 class="modal-title">{{msgDetails.dialogTitle}}</h4>
                     </div>
                     <div class="modal-body">
-                        <p>{{msgDetails.msg}}</p>
+                        <p style="white-space: pre-wrap">{{msgDetails.msg}}</p>
                     </div>
                     <div class="modal-footer">
                         <button *ngIf="msgDetails.isConfirmCancel()"
