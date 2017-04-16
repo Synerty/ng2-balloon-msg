@@ -1,3 +1,6 @@
+/*
+DISABLED ANIMATIONS until nativescript 3.0.0
+https://github.com/NativeScript/NativeScript/pull/3857
 
 .visible {
     animation-name: show;
@@ -35,6 +38,7 @@
     }
 
 }
+*/
 
 .bg-info {
     color: black;
