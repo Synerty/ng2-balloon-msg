@@ -44,6 +44,10 @@ var UsrMsgDetails = (function () {
         this.rejector = null;
         this.resolver = null;
         this.msgId = UsrMsgDetails.nextMsgId++;
+        if (this.confirmText == null)
+            this.confirmText = "Confirm";
+        if (this.cancelText == null)
+            this.cancelText = "Cancel";
         this.promise = new Promise(function (resolver, rejector) {
             _this.resolver = resolver;
             _this.rejector = rejector;
@@ -116,6 +120,7 @@ var Ng2BalloonMsgService = (function () {
         this.observable.next(new UsrMsgDetails(msg, UsrMsgLevel.Success, UsrMsgType.Fleeting, null, null, null, routePath));
     };
     Ng2BalloonMsgService.prototype.showMessage = function (msg, level, type, parameters) {
+        if (parameters === void 0) { parameters = {}; }
         var confirmText = parameters.confirmText, cancelText = parameters.cancelText, dialogTitle = parameters.dialogTitle, routePath = parameters.routePath;
         var msgObj = new UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle, routePath);
         this.observable.next(msgObj);

@@ -35,6 +35,12 @@ export class UsrMsgDetails {
                 public routePath: string | null = null) {
         this.msgId = UsrMsgDetails.nextMsgId++;
 
+        if (this.confirmText == null)
+            this.confirmText = "Confirm";
+
+        if (this.cancelText == null)
+            this.cancelText = "Cancel";
+
         this.promise = new Promise<null>((resolver, rejector) => {
             this.resolver = resolver;
             this.rejector = rejector;
@@ -143,7 +149,7 @@ export class Ng2BalloonMsgService {
     }
 
     showMessage(msg: string, level: UsrMsgLevel, type: UsrMsgType,
-                parameters?: UsrMsgParams): Promise<null> {
+                parameters: UsrMsgParams = {}): Promise<null> {
 
         let {confirmText, cancelText, dialogTitle, routePath} = parameters;
         let msgObj = new UsrMsgDetails(msg, level, type,
