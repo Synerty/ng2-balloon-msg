@@ -8,7 +8,7 @@
 
     <GridLayout width="100%" rows="auto" columns="*, auto"
             *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
-        <Label class="" [text]="msgDetails.msg" row="0" col="0"
+        <Label class="" [text]="msgDetails.msg" row="0" col="0" textWrap="true"
                  (tap)="msgClicked()"></Label>
         <Button class="" text="Open" row="0" col="1" *ngIf="msgDetails.hasRoute()"
                (tap)="openClicked()"></Button>
@@ -19,7 +19,7 @@
                 rows="auto, *, auto" columns="*, *">
 
 
-        <Label col="0" row="0" colSpan="2"
+        <Label col="0" row="0" colSpan="2" textWrap="true"
                *ngIf="msgDetails.dialogTitle !=  null"
                [text]="msgDetails.dialogTitle"
                class="h1 text-center"></Label>
