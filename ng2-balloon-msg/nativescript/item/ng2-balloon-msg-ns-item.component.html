@@ -4,7 +4,8 @@
              [class.bg-danger]="msgDetails.isError()"
              class="p-10"
              [class.visible]="shownStr == 'shown'"
-             [class.hide]="shownStr == 'hidden'">
+             [class.hide]="shownStr == 'hidden'"
+             ios:isUserInteractionEnabled="true">
 
     <GridLayout width="100%" rows="auto" columns="*, auto"
             *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
