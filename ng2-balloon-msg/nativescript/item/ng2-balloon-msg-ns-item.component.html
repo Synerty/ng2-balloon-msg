@@ -1,42 +1,53 @@
-<StackLayout [class.bg-success]="msgDetails.isSuccess()"
+<StackLayout class="p-10"
+             [class.bg-success]="msgDetails.isSuccess()"
              [class.bg-info]="msgDetails.isInfo()"
              [class.bg-warning]="msgDetails.isWarning()"
              [class.bg-danger]="msgDetails.isError()"
-             class="p-10"
              [class.visible]="shownStr == 'shown'"
              [class.hide]="shownStr == 'hidden'"
              ios:isUserInteractionEnabled="true">
 
-    <GridLayout width="100%" rows="auto" columns="*, auto"
-            *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()">
-        <Label class="" [text]="msgDetails.msg" row="0" col="0" textWrap="true"
-                 (tap)="msgClicked()"></Label>
-        <Button class="" text="Open" row="0" col="1" *ngIf="msgDetails.hasRoute()"
-               (tap)="openClicked()"></Button>
-    </GridLayout>
+  <GridLayout *ngIf="msgDetails.isFleeting() || msgDetails.isSticky()"
+              width="100%"
+              rows="auto" columns="*, auto">
+    <Label class=""
+           row="0" col="0"
+           [text]="msgDetails.msg"
+           textWrap="true"
+           (tap)="msgClicked()"></Label>
+    <Button *ngIf="msgDetails.hasRoute()"
+            class="btn"
+            row="0" col="1"
+            text="Open"
+            (tap)="openClicked()"></Button>
+  </GridLayout>
 
-    <GridLayout width="100%" height="100%"
-                *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()"
-                rows="auto, *, auto" columns="*, *">
+  <GridLayout *ngIf="msgDetails.isConfirm() || msgDetails.isConfirmCancel()"
+              width="100%" height="100%"
+              rows="auto, *, auto" columns="*, *">
+    <Label *ngIf="msgDetails.dialogTitle !=  null"
+           class="title"
+           row="0" col="0"
+           colSpan="2"
+           [text]="msgDetails.dialogTitle"
+           textWrap="true"></Label>
 
+    <Label class="h3"
+           row="1" col="0"
+           colSpan="2"
+           textWrap="true"
+           [text]="msgDetails.msg"></Label>
 
-        <Label col="0" row="0" colSpan="2" textWrap="true"
-               *ngIf="msgDetails.dialogTitle !=  null"
-               [text]="msgDetails.dialogTitle"
-               class="h1 text-center"></Label>
-
-        <Label col="0" row="1" colSpan="2"
-               [text]="msgDetails.msg" class="h3" textWrap="true"></Label>
-
-        <button col="0" row="2"
-                *ngIf="msgDetails.isConfirmCancel()"
-                (tap)="cancelClicked()"
-                [text]="msgDetails.cancelText">
-        </button>
-        <button col="1" row="2"
-                (tap)="confirmClicked()"
-                [text]="msgDetails.confirmText">
-        </button>
-    </GridLayout>
-
+    <button *ngIf="msgDetails.isConfirmCancel()"
+            class="btn btn-active"
+            row="2" col="0"
+            [text]="msgDetails.cancelText"
+            (tap)="cancelClicked()">
+    </button>
+    <button class="btn btn-primary btn-active"
+            row="2" col="1"
+            [text]="msgDetails.confirmText"
+            (tap)="confirmClicked()">
+    </button>
+  </GridLayout>
 </StackLayout>
