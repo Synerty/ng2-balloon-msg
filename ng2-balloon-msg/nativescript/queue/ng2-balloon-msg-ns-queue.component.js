@@ -33,7 +33,6 @@ Ng2BalloonMsgNsQueueComponent = __decorate([
     core_1.Component({
         selector: 'ng2-balloon-msg-ns',
         templateUrl: './ng2-balloon-msg-ns-queue.component.html',
-        styleUrls: ['./ng2-balloon-msg-ns-queue.component.css'],
         moduleId: module.id
     }),
     __metadata("design:paramtypes", [ng2_balloon_msg_service_1.Ng2BalloonMsgService])
