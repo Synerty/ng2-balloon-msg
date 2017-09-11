@@ -40,23 +40,42 @@ https://github.com/NativeScript/NativeScript/pull/3857
 }
 */
 
+.btn {
+  /*
+      Contains the button attributes
+  */
+
+  color: white;
+  cursor: pointer;
+  font-size: 14.4;
+  padding: 8;
+  border: 0;
+  background-color: #999999;
+  min-width: 40;
+
+  border-radius: 4;
+}
+
+btn:hover {
+  background-color: #737373;
+}
+
 .bg-info {
-    color: black;
-    background-color: #d9edf7;
+  color: black;
+  background-color: #d9edf7;
 }
 
 .bg-success {
-    color: black;
-    background-color: #dff0d8;
+  color: black;
+  background-color: #dff0d8;
 }
 
 .bg-warning {
-    color: black;
-    background-color: #fcf8e3;
+  color: black;
+  background-color: #fcf8e3;
 }
 
 .bg-danger {
-    color: black;
-    background-color: #f2dede;
+  color: black;
+  background-color: #f2dede;
 }
-
