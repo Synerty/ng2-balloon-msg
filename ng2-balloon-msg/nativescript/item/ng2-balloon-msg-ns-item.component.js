@@ -35,7 +35,7 @@ Ng2BalloonMsgNsItemComponent = __decorate([
     core_1.Component({
         selector: 'ng2-balloon-msg-item-ns',
         templateUrl: './ng2-balloon-msg-ns-item.component.html',
-        styleUrls: ['./ng2-balloon-msg-ns-item.component.scss'],
+        styleUrls: ['./ng2-balloon-msg-ns-item.component.css'],
         moduleId: module.id
     }),
     __metadata("design:paramtypes", [router_1.Router])
