@@ -53,7 +53,7 @@ export class Ng2BalloonMsgCommonQueueComponent implements OnInit {
     }
 
     isShowingModal() :boolean {
-        return this._onScreen.length != 0 && this.backlog[0].isModal();
+        return this._onScreen.length != 0 && this._onScreen[0].isModal();
     }
 
 

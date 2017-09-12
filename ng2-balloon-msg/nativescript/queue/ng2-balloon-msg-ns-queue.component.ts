@@ -13,4 +13,10 @@ export class Ng2BalloonMsgNsQueueComponent extends Ng2BalloonMsgCommonQueueCompo
     constructor(msgService: Ng2BalloonMsgService) {
         super(msgService);
     }
+
+    rowSpan() :number {
+        return this.isShowingModal() ? 2 : 1;
+    }
+
+
 }
