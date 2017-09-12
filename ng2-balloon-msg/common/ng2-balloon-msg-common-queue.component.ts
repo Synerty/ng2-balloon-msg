@@ -1,8 +1,14 @@
-import {OnInit} from "@angular/core";
+import {OnInit, EventEmitter, Output} from "@angular/core";
 import {Ng2BalloonMsgService, UsrMsgDetails} from "../services/ng2-balloon-msg.service";
 
 
 export class Ng2BalloonMsgCommonQueueComponent implements OnInit {
+
+    @Output("showModalEvent")
+    showModalEvent = new EventEmitter<boolean>();
+
+    @Output("showPopupEvent")
+    showPopupEvent = new EventEmitter<boolean>();
 
     // Max Queue Length, the number of messages to show in the screen
     protected readonly maxQueueLength = 3;
@@ -49,11 +55,19 @@ export class Ng2BalloonMsgCommonQueueComponent implements OnInit {
             this._onScreen.push(this.backlog.shift())
         }
 
+        this.showModalEvent.emit(this.isShowingModal());
+
+        this.showPopupEvent.emit(this.isShowingPopup());
+
         return this._onScreen;
     }
 
     isShowingModal() :boolean {
         return this._onScreen.length != 0 && this._onScreen[0].isModal();
+    }
+
+    isShowingPopup() :boolean {
+        return this._onScreen.length != 0 && !this._onScreen[0].isModal();
     }
 
 
