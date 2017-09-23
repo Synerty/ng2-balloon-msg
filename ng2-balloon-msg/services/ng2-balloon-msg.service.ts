@@ -120,8 +120,6 @@ export class Ng2BalloonMsgService {
 
     constructor() {
         this.observable = new Subject<UsrMsgDetails>();
-
-        console.log("Creating Ng2BalloonMsgService.")
     }
 
     getObservable() {

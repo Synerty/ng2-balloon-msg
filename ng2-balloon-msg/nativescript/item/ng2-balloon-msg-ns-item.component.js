@@ -38,7 +38,8 @@ Ng2BalloonMsgNsItemComponent = __decorate([
         styleUrls: ['./ng2-balloon-msg-ns-item.component.css'],
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
 ], Ng2BalloonMsgNsItemComponent);
 exports.Ng2BalloonMsgNsItemComponent = Ng2BalloonMsgNsItemComponent;
+var _a;
 //# sourceMappingURL=ng2-balloon-msg-ns-item.component.js.map

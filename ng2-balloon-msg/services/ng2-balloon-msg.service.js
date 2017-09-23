@@ -102,7 +102,6 @@ exports.UsrMsgDetails = UsrMsgDetails;
 var Ng2BalloonMsgService = (function () {
     function Ng2BalloonMsgService() {
         this.observable = new rxjs_1.Subject();
-        console.log("Creating Ng2BalloonMsgService.");
     }
     Ng2BalloonMsgService.prototype.getObservable = function () {
         return this.observable;

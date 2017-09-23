@@ -1,8 +1,20 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var Ng2BalloonMsgCommonQueueComponent = (function () {
     function Ng2BalloonMsgCommonQueueComponent(msgService) {
         this.msgService = msgService;
+        this.showModalEvent = new core_1.EventEmitter();
+        this.showPopupEvent = new core_1.EventEmitter();
         // Max Queue Length, the number of messages to show in the screen
         this.maxQueueLength = 3;
         this.backlog = [];
@@ -37,9 +49,25 @@ var Ng2BalloonMsgCommonQueueComponent = (function () {
                 break;
             this._onScreen.push(this.backlog.shift());
         }
+        this.showModalEvent.emit(this.isShowingModal());
+        this.showPopupEvent.emit(this.isShowingPopup());
         return this._onScreen;
+    };
+    Ng2BalloonMsgCommonQueueComponent.prototype.isShowingModal = function () {
+        return this._onScreen.length != 0 && this._onScreen[0].isModal();
+    };
+    Ng2BalloonMsgCommonQueueComponent.prototype.isShowingPopup = function () {
+        return this._onScreen.length != 0 && !this._onScreen[0].isModal();
     };
     return Ng2BalloonMsgCommonQueueComponent;
 }());
+__decorate([
+    core_1.Output("showModalEvent"),
+    __metadata("design:type", Object)
+], Ng2BalloonMsgCommonQueueComponent.prototype, "showModalEvent", void 0);
+__decorate([
+    core_1.Output("showPopupEvent"),
+    __metadata("design:type", Object)
+], Ng2BalloonMsgCommonQueueComponent.prototype, "showPopupEvent", void 0);
 exports.Ng2BalloonMsgCommonQueueComponent = Ng2BalloonMsgCommonQueueComponent;
 //# sourceMappingURL=ng2-balloon-msg-common-queue.component.js.map

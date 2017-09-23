@@ -25,10 +25,20 @@ var ng2_balloon_msg_service_1 = require("../../services/ng2-balloon-msg.service"
 var Ng2BalloonMsgNsQueueComponent = (function (_super) {
     __extends(Ng2BalloonMsgNsQueueComponent, _super);
     function Ng2BalloonMsgNsQueueComponent(msgService) {
-        return _super.call(this, msgService) || this;
+        var _this = _super.call(this, msgService) || this;
+        _this.rowSpanChangedEvent = new core_1.EventEmitter();
+        _this.showModalEvent.subscribe(function () { return _this.rowSpanChangedEvent.emit(_this.rowSpan()); });
+        return _this;
     }
+    Ng2BalloonMsgNsQueueComponent.prototype.rowSpan = function () {
+        return this.isShowingModal() ? 2 : 1;
+    };
     return Ng2BalloonMsgNsQueueComponent;
 }(ng2_balloon_msg_common_queue_component_1.Ng2BalloonMsgCommonQueueComponent));
+__decorate([
+    core_1.Output("rowSpanChangedEvent"),
+    __metadata("design:type", Object)
+], Ng2BalloonMsgNsQueueComponent.prototype, "rowSpanChangedEvent", void 0);
 Ng2BalloonMsgNsQueueComponent = __decorate([
     core_1.Component({
         selector: 'ng2-balloon-msg-ns',
