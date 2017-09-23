@@ -26,19 +26,16 @@ var Ng2BalloonMsgNsQueueComponent = (function (_super) {
     __extends(Ng2BalloonMsgNsQueueComponent, _super);
     function Ng2BalloonMsgNsQueueComponent(msgService) {
         var _this = _super.call(this, msgService) || this;
-        _this.rowSpanChangedEvent = new core_1.EventEmitter();
-        _this.showModalEvent.subscribe(function () { return _this.rowSpanChangedEvent.emit(_this.rowSpan()); });
+        _this.fullScreenNeededEvent = new core_1.EventEmitter();
+        _this.showModalEvent.subscribe(function (val) { return _this.fullScreenNeededEvent.emit(val); });
         return _this;
     }
-    Ng2BalloonMsgNsQueueComponent.prototype.rowSpan = function () {
-        return this.isShowingModal() ? 2 : 1;
-    };
     return Ng2BalloonMsgNsQueueComponent;
 }(ng2_balloon_msg_common_queue_component_1.Ng2BalloonMsgCommonQueueComponent));
 __decorate([
-    core_1.Output("rowSpanChangedEvent"),
+    core_1.Output("fullScreenNeededEvent"),
     __metadata("design:type", Object)
-], Ng2BalloonMsgNsQueueComponent.prototype, "rowSpanChangedEvent", void 0);
+], Ng2BalloonMsgNsQueueComponent.prototype, "fullScreenNeededEvent", void 0);
 Ng2BalloonMsgNsQueueComponent = __decorate([
     core_1.Component({
         selector: 'ng2-balloon-msg-ns',

@@ -10,19 +10,15 @@ import {Ng2BalloonMsgService} from "../../services/ng2-balloon-msg.service";
 })
 export class Ng2BalloonMsgNsQueueComponent extends Ng2BalloonMsgCommonQueueComponent {
 
-    @Output("rowSpanChangedEvent")
-    rowSpanChangedEvent = new EventEmitter<number>();
+    @Output("fullScreenNeededEvent")
+    fullScreenNeededEvent = new EventEmitter<boolean>();
 
     constructor(msgService: Ng2BalloonMsgService) {
         super(msgService);
 
         this.showModalEvent.subscribe(
-            () => this.rowSpanChangedEvent.emit(this.rowSpan())
+            (val) => this.fullScreenNeededEvent.emit(val)
         )
-    }
-
-    rowSpan() :number {
-        return this.isShowingModal() ? 2 : 1;
     }
 
 
