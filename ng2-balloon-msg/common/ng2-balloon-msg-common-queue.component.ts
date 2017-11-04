@@ -4,6 +4,9 @@ import {Ng2BalloonMsgService, UsrMsgDetails} from "../services/ng2-balloon-msg.s
 
 export class Ng2BalloonMsgCommonQueueComponent implements OnInit {
 
+    private lastShowingModal: boolean | null = null;
+    private lastShowingPopup: boolean | null = null;
+
     @Output("showModalEvent")
     showModalEvent = new EventEmitter<boolean>();
 
@@ -55,9 +58,15 @@ export class Ng2BalloonMsgCommonQueueComponent implements OnInit {
             this._onScreen.push(this.backlog.shift())
         }
 
-        this.showModalEvent.emit(this.isShowingModal());
+        if (this.lastShowingModal !== this.isShowingModal()) {
+          this.lastShowingModal = this.isShowingModal();
+          this.showModalEvent.emit(this.lastShowingModal);
+        }
 
-        this.showPopupEvent.emit(this.isShowingPopup());
+        if (this.lastShowingPopup !== this.isShowingPopup()) {
+          this.lastShowingPopup = this.isShowingPopup();
+          this.showPopupEvent.emit(this.lastShowingPopup);
+        }
 
         return this._onScreen;
     }

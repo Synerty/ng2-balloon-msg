@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 var Ng2BalloonMsgCommonQueueComponent = (function () {
     function Ng2BalloonMsgCommonQueueComponent(msgService) {
         this.msgService = msgService;
+        this.lastShowingModal = null;
+        this.lastShowingPopup = null;
         this.showModalEvent = new core_1.EventEmitter();
         this.showPopupEvent = new core_1.EventEmitter();
         // Max Queue Length, the number of messages to show in the screen
@@ -49,8 +51,14 @@ var Ng2BalloonMsgCommonQueueComponent = (function () {
                 break;
             this._onScreen.push(this.backlog.shift());
         }
-        this.showModalEvent.emit(this.isShowingModal());
-        this.showPopupEvent.emit(this.isShowingPopup());
+        if (this.lastShowingModal !== this.isShowingModal()) {
+            this.lastShowingModal = this.isShowingModal();
+            this.showModalEvent.emit(this.lastShowingModal);
+        }
+        if (this.lastShowingPopup !== this.isShowingPopup()) {
+            this.lastShowingPopup = this.isShowingPopup();
+            this.showPopupEvent.emit(this.lastShowingPopup);
+        }
         return this._onScreen;
     };
     Ng2BalloonMsgCommonQueueComponent.prototype.isShowingModal = function () {
