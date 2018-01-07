@@ -68,8 +68,7 @@ Ng2BalloonMsgItemComponent = __decorate([
             ])
         ],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+    __metadata("design:paramtypes", [router_1.Router])
 ], Ng2BalloonMsgItemComponent);
 exports.Ng2BalloonMsgItemComponent = Ng2BalloonMsgItemComponent;
-var _a;
 //# sourceMappingURL=ng2-balloon-msg-web-item.component.js.map
