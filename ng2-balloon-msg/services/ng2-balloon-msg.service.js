@@ -25,7 +25,7 @@ var UsrMsgType;
     UsrMsgType[UsrMsgType["Confirm"] = 4] = "Confirm";
     UsrMsgType[UsrMsgType["ConfirmCancel"] = 8] = "ConfirmCancel";
 })(UsrMsgType = exports.UsrMsgType || (exports.UsrMsgType = {}));
-var UsrMsgDetails = (function () {
+var UsrMsgDetails = /** @class */ (function () {
     function UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle, routePath) {
         if (confirmText === void 0) { confirmText = null; }
         if (cancelText === void 0) { cancelText = null; }
@@ -95,11 +95,11 @@ var UsrMsgDetails = (function () {
         if (this.rejector != null)
             this.rejector();
     };
+    UsrMsgDetails.nextMsgId = 1;
     return UsrMsgDetails;
 }());
-UsrMsgDetails.nextMsgId = 1;
 exports.UsrMsgDetails = UsrMsgDetails;
-var Ng2BalloonMsgService = (function () {
+var Ng2BalloonMsgService = /** @class */ (function () {
     function Ng2BalloonMsgService() {
         this.observable = new rxjs_1.Subject();
     }
@@ -125,11 +125,11 @@ var Ng2BalloonMsgService = (function () {
         this.observable.next(msgObj);
         return msgObj.promise;
     };
+    Ng2BalloonMsgService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], Ng2BalloonMsgService);
     return Ng2BalloonMsgService;
 }());
-Ng2BalloonMsgService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], Ng2BalloonMsgService);
 exports.Ng2BalloonMsgService = Ng2BalloonMsgService;
 //# sourceMappingURL=ng2-balloon-msg.service.js.map

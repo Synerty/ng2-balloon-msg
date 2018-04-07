@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var Ng2BalloonMsgCommonQueueComponent = (function () {
+var Ng2BalloonMsgCommonQueueComponent = /** @class */ (function () {
     function Ng2BalloonMsgCommonQueueComponent(msgService) {
         this.msgService = msgService;
         this.lastShowingModal = null;
@@ -67,15 +67,15 @@ var Ng2BalloonMsgCommonQueueComponent = (function () {
     Ng2BalloonMsgCommonQueueComponent.prototype.isShowingPopup = function () {
         return this._onScreen.length != 0 && !this._onScreen[0].isModal();
     };
+    __decorate([
+        core_1.Output("showModalEvent"),
+        __metadata("design:type", Object)
+    ], Ng2BalloonMsgCommonQueueComponent.prototype, "showModalEvent", void 0);
+    __decorate([
+        core_1.Output("showPopupEvent"),
+        __metadata("design:type", Object)
+    ], Ng2BalloonMsgCommonQueueComponent.prototype, "showPopupEvent", void 0);
     return Ng2BalloonMsgCommonQueueComponent;
 }());
-__decorate([
-    core_1.Output("showModalEvent"),
-    __metadata("design:type", Object)
-], Ng2BalloonMsgCommonQueueComponent.prototype, "showModalEvent", void 0);
-__decorate([
-    core_1.Output("showPopupEvent"),
-    __metadata("design:type", Object)
-], Ng2BalloonMsgCommonQueueComponent.prototype, "showPopupEvent", void 0);
 exports.Ng2BalloonMsgCommonQueueComponent = Ng2BalloonMsgCommonQueueComponent;
 //# sourceMappingURL=ng2-balloon-msg-common-queue.component.js.map

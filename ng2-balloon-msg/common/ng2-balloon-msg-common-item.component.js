@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ng2_balloon_msg_service_1 = require("../services/ng2-balloon-msg.service");
-var Ng2BalloonMsgCommonItemComponent = (function () {
+var Ng2BalloonMsgCommonItemComponent = /** @class */ (function () {
     function Ng2BalloonMsgCommonItemComponent(router) {
         this.router = router;
         this.shown = true;
@@ -73,11 +73,11 @@ var Ng2BalloonMsgCommonItemComponent = (function () {
             _this.shown = false;
         }, this.animationDuration + 100);
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", ng2_balloon_msg_service_1.UsrMsgDetails)
+    ], Ng2BalloonMsgCommonItemComponent.prototype, "msgDetails", void 0);
     return Ng2BalloonMsgCommonItemComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", ng2_balloon_msg_service_1.UsrMsgDetails)
-], Ng2BalloonMsgCommonItemComponent.prototype, "msgDetails", void 0);
 exports.Ng2BalloonMsgCommonItemComponent = Ng2BalloonMsgCommonItemComponent;
 //# sourceMappingURL=ng2-balloon-msg-common-item.component.js.map

@@ -22,7 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ng2_balloon_msg_common_queue_component_1 = require("../../common/ng2-balloon-msg-common-queue.component");
 var ng2_balloon_msg_service_1 = require("../../services/ng2-balloon-msg.service");
-var Ng2BalloonMsgNsQueueComponent = (function (_super) {
+var Ng2BalloonMsgNsQueueComponent = /** @class */ (function (_super) {
     __extends(Ng2BalloonMsgNsQueueComponent, _super);
     function Ng2BalloonMsgNsQueueComponent(msgService) {
         var _this = _super.call(this, msgService) || this;
@@ -30,19 +30,19 @@ var Ng2BalloonMsgNsQueueComponent = (function (_super) {
         _this.showModalEvent.subscribe(function (val) { return _this.fullScreenNeededEvent.emit(val); });
         return _this;
     }
+    __decorate([
+        core_1.Output("fullScreenNeededEvent"),
+        __metadata("design:type", Object)
+    ], Ng2BalloonMsgNsQueueComponent.prototype, "fullScreenNeededEvent", void 0);
+    Ng2BalloonMsgNsQueueComponent = __decorate([
+        core_1.Component({
+            selector: 'ng2-balloon-msg-ns',
+            templateUrl: './ng2-balloon-msg-ns-queue.component.html',
+            moduleId: module.id
+        }),
+        __metadata("design:paramtypes", [ng2_balloon_msg_service_1.Ng2BalloonMsgService])
+    ], Ng2BalloonMsgNsQueueComponent);
     return Ng2BalloonMsgNsQueueComponent;
 }(ng2_balloon_msg_common_queue_component_1.Ng2BalloonMsgCommonQueueComponent));
-__decorate([
-    core_1.Output("fullScreenNeededEvent"),
-    __metadata("design:type", Object)
-], Ng2BalloonMsgNsQueueComponent.prototype, "fullScreenNeededEvent", void 0);
-Ng2BalloonMsgNsQueueComponent = __decorate([
-    core_1.Component({
-        selector: 'ng2-balloon-msg-ns',
-        templateUrl: './ng2-balloon-msg-ns-queue.component.html',
-        moduleId: module.id
-    }),
-    __metadata("design:paramtypes", [ng2_balloon_msg_service_1.Ng2BalloonMsgService])
-], Ng2BalloonMsgNsQueueComponent);
 exports.Ng2BalloonMsgNsQueueComponent = Ng2BalloonMsgNsQueueComponent;
 //# sourceMappingURL=ng2-balloon-msg-ns-queue.component.js.map

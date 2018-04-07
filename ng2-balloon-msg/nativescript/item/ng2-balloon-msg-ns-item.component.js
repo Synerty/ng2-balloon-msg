@@ -22,23 +22,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ng2_balloon_msg_common_item_component_1 = require("../../common/ng2-balloon-msg-common-item.component");
-var Ng2BalloonMsgNsItemComponent = (function (_super) {
+var Ng2BalloonMsgNsItemComponent = /** @class */ (function (_super) {
     __extends(Ng2BalloonMsgNsItemComponent, _super);
     function Ng2BalloonMsgNsItemComponent(router) {
         var _this = _super.call(this, router) || this;
         _this.router = router;
         return _this;
     }
+    Ng2BalloonMsgNsItemComponent = __decorate([
+        core_1.Component({
+            selector: 'ng2-balloon-msg-item-ns',
+            templateUrl: './ng2-balloon-msg-ns-item.component.html',
+            styleUrls: ['./ng2-balloon-msg-ns-item.component.css'],
+            moduleId: module.id
+        }),
+        __metadata("design:paramtypes", [router_1.Router])
+    ], Ng2BalloonMsgNsItemComponent);
     return Ng2BalloonMsgNsItemComponent;
 }(ng2_balloon_msg_common_item_component_1.Ng2BalloonMsgCommonItemComponent));
-Ng2BalloonMsgNsItemComponent = __decorate([
-    core_1.Component({
-        selector: 'ng2-balloon-msg-item-ns',
-        templateUrl: './ng2-balloon-msg-ns-item.component.html',
-        styleUrls: ['./ng2-balloon-msg-ns-item.component.css'],
-        moduleId: module.id
-    }),
-    __metadata("design:paramtypes", [router_1.Router])
-], Ng2BalloonMsgNsItemComponent);
 exports.Ng2BalloonMsgNsItemComponent = Ng2BalloonMsgNsItemComponent;
 //# sourceMappingURL=ng2-balloon-msg-ns-item.component.js.map
