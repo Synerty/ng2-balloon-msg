@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
+var Subject_1 = require("rxjs/Subject");
 var UsrMsgLevel;
 (function (UsrMsgLevel) {
     UsrMsgLevel[UsrMsgLevel["Error"] = 1] = "Error";
@@ -101,7 +101,7 @@ var UsrMsgDetails = /** @class */ (function () {
 exports.UsrMsgDetails = UsrMsgDetails;
 var Ng2BalloonMsgService = /** @class */ (function () {
     function Ng2BalloonMsgService() {
-        this.observable = new rxjs_1.Subject();
+        this.observable = new Subject_1.Subject();
     }
     Ng2BalloonMsgService.prototype.getObservable = function () {
         return this.observable;
