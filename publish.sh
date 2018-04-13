@@ -46,7 +46,7 @@ git push --tags
 npm run packagr
 
 echo "Publishing to NPM"
-cd dist && npm publish --access=public
+(cd dist && npm publish --access=public)
 
 
 echo
