@@ -1,6 +1,6 @@
 {
   "name": "@synerty/ng2-balloon-msg",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Show balloon messages to users with Angular5",
   "main": "index.js",
   "repository": {
