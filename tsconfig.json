@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "outDir":"./",
     "noEmitOnError": false,
     "baseUrl": "build-web/src",
     "sourceMap": true,

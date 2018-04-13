@@ -5,9 +5,15 @@
 # !*.d.ts
 
 # compiled output
-**/dist
+.ng*
+ng-package.json
 **/tmp
 **/out-tsc
+build-ns
+.gitignore
+.npmignore
+dist.tgz
+ng2-balloon-msg
 
 # dependencies
 **/node_modules
