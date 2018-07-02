@@ -19,6 +19,7 @@
     ]
   },
   "exclude": [
+    "dist",
     "build-ns",
     "build-web",
     "node_modules"
