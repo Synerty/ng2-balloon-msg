@@ -27,11 +27,11 @@ var UsrMsgType;
 })(UsrMsgType = exports.UsrMsgType || (exports.UsrMsgType = {}));
 var UsrMsgDetails = /** @class */ (function () {
     function UsrMsgDetails(msg, level, type, confirmText, cancelText, dialogTitle, routePath) {
+        var _this = this;
         if (confirmText === void 0) { confirmText = null; }
         if (cancelText === void 0) { cancelText = null; }
         if (dialogTitle === void 0) { dialogTitle = null; }
         if (routePath === void 0) { routePath = null; }
-        var _this = this;
         this.msg = msg;
         this.level = level;
         this.type = type;
